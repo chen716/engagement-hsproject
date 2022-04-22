@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['13.57.184.27']
 # Application definition
 
 INSTALLED_APPS = [
+    'sever.apps.SeverConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -66,7 +67,9 @@ TEMPLATES = [
         },
     },
 ]
-
+SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
+TEMPLATE_DIRS = (
+	os.path.join(SETTINGS_PATH, 'sever/templates'),)
 WSGI_APPLICATION = 'engagement.wsgi.application'
 
 
@@ -74,10 +77,19 @@ WSGI_APPLICATION = 'engagement.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+'default': {
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME':'engagment',
+
+        'USER': 'postgres',
+
+        'PASSWORD': 'chenyang',
+
+        'HOST': 'localhost',
+
+        'PORT': '5432',}
 }
 
 
